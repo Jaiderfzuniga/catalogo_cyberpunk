@@ -109,6 +109,9 @@ if __name__ == '__main__':
                             precio TEXT NOT NULL,
                             talla TEXT NOT NULL
                         )''')
-   port = int(os.environ.get('PORT', 5000))
-app.run(host='0.0.0.0', port=port)
+
+    # Esta línea es clave para que Render pueda detectar el puerto
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
 
