@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'clave_predeterminada')
-ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'admin**')
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'admin***')
 
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['DATABASE'] = 'catalog.db'
@@ -109,4 +109,6 @@ if __name__ == '__main__':
                             precio TEXT NOT NULL,
                             talla TEXT NOT NULL
                         )''')
-    app.run(debug=True)
+   port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port)
+
