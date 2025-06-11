@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo Cyberpunk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Catálogo de Prendas</h1>
+  {% if admin %}
+    <a class="btn" href="/upload">Subir Nueva</a>
+    <a class="btn btn-secondary" href="/logout">Cerrar Sesión</a>
+  {% else %}
+    <a class="btn" href="/login">Admin</a>
+  {% endif %}
+  <hr>
+
+  <div class="grid">
+    {% for item in items %}
+      <div class="card">
+        <img src="/static/uploads/{{ item.imagen }}" alt="Imagen de prenda">
+        <div class="card-body">
+          <p><strong>{{ item.categoria }}</strong></p>
+          <p>${{ item.precio }} | Talla: {{ item.talla }}</p>
+          {% if admin %}
+            <a class="btn btn-secondary" href="/edit/{{ item.id }}">Editar</a>
+            <a class="btn btn-danger" href="/delete/{{ item.id }}" onclick="return confirm('¿Eliminar esta prenda?');">Eliminar</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>

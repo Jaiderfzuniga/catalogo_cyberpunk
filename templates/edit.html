@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar Prenda</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Editar Prenda</h1>
+  <form method="post" enctype="multipart/form-data">
+    <label>Categoría:</label>
+    <input type="text" name="categoria" value="{{ item.categoria }}" required>
+    <label>Precio:</label>
+    <input type="text" name="precio" value="{{ item.precio }}" required>
+    <label>Talla:</label>
+    <input type="text" name="talla" value="{{ item.talla }}" required>
+    <label>Nueva Imagen (opcional):</label>
+    <input type="file" name="image">
+    <button type="submit">Actualizar</button>
+    <a class="btn btn-secondary" href="/">Cancelar</a>
+  </form>
+</div>
+</body>
+</html>
